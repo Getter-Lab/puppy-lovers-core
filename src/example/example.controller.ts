@@ -1,11 +1,13 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { ExampleService } from './example.service';
+import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { CreateExampleDto } from './dto/create-example.dto';
 import { UpdateExampleDto } from './dto/update-example.dto';
+import { ExampleService } from './example.service';
 
+@ApiTags("Example")
 @Controller('example')
 export class ExampleController {
-  constructor(private readonly exampleService: ExampleService) {}
+  constructor(private readonly exampleService: ExampleService) { }
 
   @Post()
   create(@Body() createExampleDto: CreateExampleDto) {
