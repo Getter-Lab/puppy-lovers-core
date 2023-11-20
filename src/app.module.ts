@@ -8,11 +8,11 @@ const ENVIRONMENT = process.env.NODE_ENV || 'development';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: `.env.${ENVIRONMENT}`
+      envFilePath: `.env.${ENVIRONMENT}`,
     }),
-    ExampleModule
+    ExampleModule,
   ],
   controllers: [],
   providers: [],
 })
-export class AppModule { }
+export class AppModule {}
