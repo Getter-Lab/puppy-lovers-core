@@ -1,73 +1,57 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# base-nest-app-template
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Sobre
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+- Essa aplicação é um template com configurações básicas iniciais para agilizar o desenvolvimento de aplicações backend com nestJs
 
-## Description
+## Padronização de commit
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- Para padronização de commits utilizamos o **_[commitizen](https://commitizen-tools.github.io/commitizen/)_**, que usa como base as regras do **_[Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)_** que assume que sua equipe usa uma maneira padrão de submeter regras e, a partir dessa base, pode melhorar a versão do seu projeto, criar o changelog e atualizar arquivos
 
-## Installation
+## Versionamento do projeto
 
-```bash
-$ yarn install
+- Para versionamento de código, utilizamos os conceitos do **_[Semantic Versioning](https://semver.org/)_** que usa um conjunto simples de regras e requisitos que determinam como os números de versão são atribuídos e incrementados. Essas regras são baseadas, mas não necessariamente limitadas a práticas comuns difundidas pré-existentes em uso em softwares fechados e de código aberto
+
+<!-- ## Estrutura do projeto
+
 ```
+.
+├── src
+│   ├── application             # Application domain folder
+│   │   ├── enums               # Application enumerations
+│   │   ├── ports               # Application contracts
+│   │   ├── repositories        # Application persistence layer
+│   │   │    ├── ports          # Repositories contracts
+│   │   │    ├── prisma         # Prisma repositories layer implementation
+│   │   │    └── index.ts       # Import/export of all repositories layer
+│   │   └── useCases            # Application business rule layer
+│   │
+│   └── main                    # Main folder with configs, ports and adapters
+│       ├── config              # Main configs with factories, responses, envs, db configs and utils
+│       ├── controllers         # HTTP api implementation routes
+│       ├── queues              # Mediator between queue entry and use cases
+│       ├── requests            # Constructor between controllers and use cases, this layer build the necessary controller resources
+│       └── schemas             # Input data schema contract and validation
+│
+├── *.env.*                     # Environment configuration per stage
+├── docker-compose.yaml         # Application resource provisioning with docker
+├── openapi.yaml                # Open APi file with all http routes
+├── package.json                # Javascript scripts
+├── serverless.ts               # Serverless service file
+├── tsconfig.json               # Typescript compiler configuration
+└── webpack.config.js           # Webpack configuration
+``` -->
 
-## Running the app
+## Pacotes
 
-```bash
-# development
-$ yarn run start
-
-# watch mode
-$ yarn run start:dev
-
-# production mode
-$ yarn run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ yarn run test
-
-# e2e tests
-$ yarn run test:e2e
-
-# test coverage
-$ yarn run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+- Production
+  - [class-validator:0.14.0](https://www.npmjs.com/package/class-validator)
+  - [rxjs:7.8.1](https://www.npmjs.com/package/rxjs)
+  - [express:4.18.2](https://www.npmjs.com/package/express)
+  - [@nestjs/swagger:7.1.16](https://www.npmjs.com/package/@nestjs/swagger)
+- Development
+  - [eslint:8.54.0](https://www.npmjs.com/package/eslint)
+  - [jest:29.7.0](https://www.npmjs.com/package/jest)
+  - [prettier:3.1.0](https://npmjs.com/package/prettier)
+  - [supertest:6.3.3](https://www.npmjs.com/package/supertest)
+  - [typescript:5.3.2](https://www.npmjs.com/package/typescript)
