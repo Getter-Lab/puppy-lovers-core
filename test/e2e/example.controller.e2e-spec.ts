@@ -1,7 +1,7 @@
-import { exampleRepositoryMock } from '#/mock/repository/example.repository.mock';
+import { exampleRepositoryMock, fakeExampleList } from '#/mock/repository/example.repository.mock';
 import { CreateExampleUseCase } from '@/modules/example/application/useCase/example/create.usecase';
 import { GetAllExampleUseCase } from '@/modules/example/application/useCase/example/get-all.usecase';
-import { InMemoryExampleRepository } from '@/modules/example/infra/database/inMemory/example.repository';
+import { IExampleRepository } from '@/modules/example/domain/repository/example.repository';
 import { ExampleController } from '@/modules/example/infra/rest/example.controller';
 import { ExampleRoutes } from '@/modules/example/infra/rest/routes/example.enum';
 import { HttpStatus, INestApplication } from '@nestjs/common';
@@ -20,7 +20,7 @@ describe('[E2E] - ExampleController', () => {
         CreateExampleUseCase,
         GetAllExampleUseCase,
         {
-          provide: InMemoryExampleRepository,
+          provide: IExampleRepository,
           useValue: exampleRepositoryMock,
         },
       ],
@@ -37,8 +37,9 @@ describe('[E2E] - ExampleController', () => {
   });
 
   it('GET /examples', async () => {
+    const expectBodyResponse = fakeExampleList.map((example) => example.toJson());
     const getAllUcSpy = jest.spyOn(getAllExampleUseCase, 'execute');
-    await supertest(app.getHttpServer()).get(ExampleRoutes.root).expect(HttpStatus.OK).expect([]);
+    await supertest(app.getHttpServer()).get(ExampleRoutes.root).expect(HttpStatus.OK).expect(expectBodyResponse);
     expect(getAllUcSpy).toHaveBeenCalled();
   });
 

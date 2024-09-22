@@ -1,4 +1,4 @@
-import { exampleRepositoryMock } from '#/mock/repository/example.repository.mock';
+import { exampleRepositoryMock, fakeExampleList } from '#/mock/repository/example.repository.mock';
 import { CreateExampleUseCase } from '../../application/useCase/example/create.usecase';
 import { GetAllExampleUseCase } from '../../application/useCase/example/get-all.usecase';
 import { IExampleRepository } from '../../domain/repository/example.repository';
@@ -23,7 +23,7 @@ describe('[Integration] - ExampleController', () => {
 
   it('should get all examples correctly', async () => {
     const getAllUcSpy = jest.spyOn(getAllExampleUseCase, 'execute');
-    const expectedOutput = (await exampleRepositoryMock.findAll()).map((example) => example.toJson());
+    const expectedOutput = fakeExampleList.map((example) => example.toJson());
 
     const response = await controller.findAll();
 
