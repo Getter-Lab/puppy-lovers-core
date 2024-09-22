@@ -23,6 +23,7 @@ describe('[UseCase] Get all example', () => {
     expect(output).toStrictEqual(
       expectedExample.map((example) => ({
         name: example.toJson().name,
+        id: example.toJson().id,
       })),
     );
     expect(findAllExampleSpy).toHaveBeenCalled();

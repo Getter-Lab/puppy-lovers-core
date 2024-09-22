@@ -1,11 +1,19 @@
 import { Module } from '@nestjs/common';
 import { CreateExampleUseCase } from './application/useCase/example/create.usecase';
 import { GetAllExampleUseCase } from './application/useCase/example/get-all.usecase';
-import { InMemoryExampleRepository } from './infra/database/inMemory/example.repository';
+import { IExampleRepository } from './domain/repository/example.repository';
+import { PrismaExampleRepository } from './infra/database/prisma/example.repository';
 import { ExampleController } from './infra/rest/example.controller';
 
 @Module({
   controllers: [ExampleController],
-  providers: [InMemoryExampleRepository, CreateExampleUseCase, GetAllExampleUseCase],
+  providers: [
+    CreateExampleUseCase,
+    GetAllExampleUseCase,
+    {
+      provide: IExampleRepository,
+      useClass: PrismaExampleRepository,
+    },
+  ],
 })
 export class ExampleModule {}

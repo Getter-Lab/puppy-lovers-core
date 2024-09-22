@@ -8,7 +8,7 @@ datasource db {
 }
 
 model Example {
-  id   String @id @default(uuid(7)) @db.Uuid
+  id   String @id @unique @db.Uuid
   name String
 
   @@map("examples")

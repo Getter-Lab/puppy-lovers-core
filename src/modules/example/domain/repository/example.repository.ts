@@ -1,6 +1,6 @@
 import { Example } from '../entity/example.entity';
 
-export interface IExampleRepository {
-  save(example: Example): Promise<void>;
-  findAll(): Promise<Example[]>;
+export abstract class IExampleRepository {
+  abstract save(example: Example): Promise<void>;
+  abstract findAll(): Promise<Example[]>;
 }

@@ -1,13 +1,16 @@
+import { BaseEntity } from '@/common/domain/entity/entity';
+
 export type ExampleProps = {
+  id?: string;
   name: string;
 };
 
-export class Example {
-  private name: string;
+export class Example extends BaseEntity {
+  private readonly name: string;
 
   constructor(props: ExampleProps) {
-    Object.assign(this, props);
-    Object.freeze(this);
+    super(props.id);
+    this.name = props.name;
   }
 
   static create(props: ExampleProps): Example {
@@ -16,6 +19,7 @@ export class Example {
 
   toJson(): ExampleProps {
     return {
+      id: this._id,
       name: this.name,
     };
   }
