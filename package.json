@@ -16,8 +16,9 @@
     "test": "jest --runInBand --detectOpenHandles",
     "test:watch": "npm run test -- --watch",
     "test:cov": "npm run test -- --coverage",
-    "test:integration": "npm run test -- --testPathPattern=.*\\.spec\\.ts$",
-    "test:unit": "npm run test -- --testPathPattern=.*\\.test\\.ts$",
+    "test:integration": "npm run test -- --testPathPattern=.*\\.test\\.ts$",
+    "test:unit": "npm run test -- --testPathPattern=.*\\.spec\\.ts$",
+    "test:e2e": "npm run test -- --config ./test/jest-e2e.config.js",
     "prepare": "husky install",
     "release": "semantic-release --no-ci"
   },
@@ -69,13 +70,25 @@
       "json",
       "ts"
     ],
-    "rootDir": "src",
+    "rootDir": ".",
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"
     },
-    "collectCoverageFrom": [
-      "**/*.(t|j)s"
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules/",
+      "<rootDir>/dist/",
+      ".js"
     ],
+    "coveragePathIgnorePatterns": [
+      ".*\\.(module).ts",
+      ".*\\.e2e-spec.ts",
+      "index.ts",
+      "main.ts"
+    ],
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1",
+      "^#/(.*)$": "<rootDir>/test/$1"
+    },
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
   },
