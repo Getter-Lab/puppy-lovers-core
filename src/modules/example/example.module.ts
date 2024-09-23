@@ -1,3 +1,4 @@
+import { DatabaseModule } from '@/common/infra/database/database.module';
 import { Module } from '@nestjs/common';
 import { CreateExampleUseCase } from './application/useCase/example/create.usecase';
 import { GetAllExampleUseCase } from './application/useCase/example/get-all.usecase';
@@ -6,6 +7,7 @@ import { PrismaExampleRepository } from './infra/database/prisma/example.reposit
 import { ExampleController } from './infra/rest/example.controller';
 
 @Module({
+  imports: [DatabaseModule],
   controllers: [ExampleController],
   providers: [
     CreateExampleUseCase,
