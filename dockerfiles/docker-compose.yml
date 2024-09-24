@@ -1,0 +1,29 @@
+version: '3.9'
+services:
+  app:
+    container_name: app
+    build:
+      context: ../
+      dockerfile: dockerfiles/Dockerfile
+    ports:
+      - '3000:3000'
+    environment:
+      PORT: 3000
+      DATABASE_URL: xxx
+      SWAGGER_PREFIX: '/api-docs'
+      PROJECT_NAME: 'Project Name'
+      PROJECT_DESCRIPTION: 'Project Description'
+      PROJECT_VERSION: '1.0.0'
+  pg_database:
+    image: postgres
+    container_name: 'template_pg'
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: example
+      POSTGRES_DB: example
+
+networks:
+  default:
+    driver: bridge
