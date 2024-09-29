@@ -29,7 +29,7 @@ export class HttpCoreService implements IHttpService {
           };
           this.logger.error('HTTP_REQUEST_ERROR', JSON.stringify(responseError), HttpCoreService.name);
           throw new BadGatewayException({
-            message: error.message,
+            message: error?.message,
           });
         }),
         map(({ data }) => data),
@@ -38,8 +38,8 @@ export class HttpCoreService implements IHttpService {
         }),
       ),
     ).finally(() => {
-      const duration = this.dateProvider.diffInSecs(new Date(this.dateProvider.now()), new Date(startTime));
-      this.logger.log(`${request.method?.toUpperCase()} - ${request.url} EXECUTED IN ${duration}ms`, HttpService.name);
+      const duration = this.dateProvider.diffInMs(new Date(this.dateProvider.now()), new Date(startTime));
+      this.logger.warn(`${request.method?.toUpperCase()} - ${request.url} EXECUTED IN ${duration}ms`, HttpService.name);
     });
   }
 }
