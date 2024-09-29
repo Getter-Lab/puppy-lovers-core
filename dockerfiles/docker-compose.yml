@@ -2,6 +2,8 @@ version: '3.9'
 services:
   app:
     container_name: app
+    depends_on:
+      - pg_database
     build:
       context: ../
       dockerfile: dockerfiles/Dockerfile
@@ -9,11 +11,13 @@ services:
       - '3000:3000'
     environment:
       PORT: 3000
-      DATABASE_URL: xxx
+      DATABASE_URL: postgresql://postgres:example@pg_database:5432/example?schema=public
       SWAGGER_PREFIX: '/api-docs'
       PROJECT_NAME: 'Project Name'
       PROJECT_DESCRIPTION: 'Project Description'
       PROJECT_VERSION: '1.0.0'
+      HTTP_RETRY_ATTEMPTS: 3
+
   pg_database:
     image: postgres
     container_name: 'template_pg'

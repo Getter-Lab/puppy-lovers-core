@@ -19,8 +19,7 @@ COPY . ./
 
 # Db setup prisma
 RUN npx prisma generate
-COPY prisma ./prisma/
-
+COPY src/common/infra/prisma/ ./prisma/
 
 RUN npm run build
 RUN npm prune --omit=dev
@@ -40,7 +39,6 @@ WORKDIR /app
 
 COPY --from=builder /app/.package.*.txt /app/
 COPY --from=builder /app/dist /app/dist
-COPY --from=builder /app/newrelic.js /app/dist/
 COPY --from=builder /app/node_modules /app/node_modules
 
 RUN addgroup -S app && adduser -S app -G app && \
@@ -52,4 +50,4 @@ USER app
 CMD PROJECT_VERSION=$(cat .package.version.txt) \
   PROJECT_NAME=$(cat .package.name.txt) \
   PROJECT_DESCRIPTION=$(cat .package.description.txt) \
-  node dist/main
+  node dist/src/main
