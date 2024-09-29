@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Logger, Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { DatabaseModule } from './common/infra/database/database.module';
 import { SwaggerModule } from './common/infra/doc/swagger.module';
@@ -16,5 +16,6 @@ const ENVIRONMENT = process.env.NODE_ENV || 'development';
     DatabaseModule,
     SwaggerModule,
   ],
+  providers: [Logger],
 })
 export class AppModule {}
