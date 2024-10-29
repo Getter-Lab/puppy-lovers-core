@@ -24,7 +24,6 @@ describe('[Unit] Dayjs date provider', () => {
       const date1 = new Date('2024-04-29');
       const date2 = new Date('2024-04-28');
       const output = dateProvider.diffInMs(date1, date2);
-      console.log(output);
       expect(output).toBe(86400000);
     });
   });

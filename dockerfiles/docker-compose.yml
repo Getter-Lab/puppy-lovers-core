@@ -11,7 +11,7 @@ services:
       - '3000:3000'
     environment:
       PORT: 3000
-      DATABASE_URL: postgresql://postgres:example@pg_database:5432/example?schema=public
+      DATABASE_URL: postgresql://xxx:xxx@pg_database:5432/xxx?schema=public
       SWAGGER_PREFIX: '/api-docs'
       PROJECT_NAME: 'Project Name'
       PROJECT_DESCRIPTION: 'Project Description'
@@ -24,9 +24,9 @@ services:
     ports:
       - '5432:5432'
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: example
-      POSTGRES_DB: example
+      POSTGRES_USER: xxx
+      POSTGRES_PASSWORD: xxx
+      POSTGRES_DB: xxx
 
 networks:
   default:

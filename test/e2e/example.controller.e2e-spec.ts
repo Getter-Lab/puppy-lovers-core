@@ -1,6 +1,6 @@
 import { exampleRepositoryMock, fakeExampleList } from '#/mock/repository/example.repository.mock';
-import { CreateExampleUseCase } from '@/modules/example/application/useCase/example/create.usecase';
-import { GetAllExampleUseCase } from '@/modules/example/application/useCase/example/get-all.usecase';
+import { CreateExampleUseCase } from '@/modules/example/application/useCase/create.usecase';
+import { GetAllExampleUseCase } from '@/modules/example/application/useCase/get-all.usecase';
 import { IExampleRepository } from '@/modules/example/domain/repository/example.repository';
 import { ExampleController } from '@/modules/example/infra/rest/example.controller';
 import { ExampleRoutes } from '@/modules/example/infra/rest/routes/example.enum';

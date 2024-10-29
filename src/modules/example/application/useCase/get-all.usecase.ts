@@ -1,7 +1,7 @@
 import { IExampleRepository } from '@/modules/example/domain/repository/example.repository';
 import { Injectable } from '@nestjs/common';
-import { GetAllExampleOutput } from '../types/examples';
-import { UseCase } from '../types/useCase';
+import { GetAllExampleOutput } from './types/examples';
+import { UseCase } from './types/useCase';
 
 @Injectable()
 export class GetAllExampleUseCase implements UseCase<unknown, GetAllExampleOutput> {

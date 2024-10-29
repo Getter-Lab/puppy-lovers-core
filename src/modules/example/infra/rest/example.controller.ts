@@ -1,8 +1,8 @@
 import { ApiCustomDoc } from '@/common/infra/doc/swagger.decorator';
 import { Body, Controller, Get, HttpCode, HttpStatus, Post } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { CreateExampleUseCase } from '../../application/useCase/example/create.usecase';
-import { GetAllExampleUseCase } from '../../application/useCase/example/get-all.usecase';
+import { CreateExampleUseCase } from '../../application/useCase/create.usecase';
+import { GetAllExampleUseCase } from '../../application/useCase/get-all.usecase';
 import { CreateExampleDto } from './dto/create-example.dto';
 import { ExampleRoutes } from './routes/example.enum';
 

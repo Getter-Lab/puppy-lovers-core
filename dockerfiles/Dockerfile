@@ -1,5 +1,22 @@
-# PRODUCTION DOCKERFILE
+# ---------- LOCAL DEVELOPMENT --------
+FROM node:20-alpine As development
 
+RUN apk update && apk add openssl
+
+WORKDIR /app
+
+COPY --chown=node:node package*.json ./
+
+RUN npm ci
+
+COPY --chown=node:node . .
+
+RUN npm run prisma:generate
+
+USER node
+
+
+## ------- PRODUCTION DEVELOPMENT -------
 ##  -- Pre-build image --
 FROM node:20-alpine AS builder
 
