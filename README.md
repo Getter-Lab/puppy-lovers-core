@@ -1,5 +1,33 @@
 # base-nest-app-template
 
+### Como rodar localmente
+
+#### Variáveis de ambiente:
+
+- Crie um arquivo `.env.local` na raiz do projeto seguindo o arquivo de exemplo `.env.example` substituindo os valores com os valores configurados no ambiente.
+
+#### Banco de dados e backend (container)
+
+- Tenha instalado docker e docker compose.
+- Tenha as variáveis de ambientes configuradas como informado do step anterior.
+- Na raiz do projeto rode o comando `docker-compose -f dockerfiles/docker-compose-dev.yml up --build`
+- Acesse o container `app` com o seguinte comando `docker-compose -f dockerfiles/docker-compose-dev.yml exec app sh`
+- Em seguida execute o comando ``npx prisma migrate dev`
+
+#### Backend
+
+- Tenha instalado o nodeJS na versão `20x`
+- Na raiz do projeto rode o comando `npm install`
+- Em seguida execute o comando ``npx prisma migrate dev`
+- Após iniciar banco de dados, rode o comando `npm run dev`
+
+#### Testes Automatizados
+
+- Para executar os testes rode o seguinte comando `npm test` ou `npm t`
+  > Dessa forma serão executados todos os testes da aplicação. É necessário estar com banco de dados e variáveis de ambiente de teste configurados.
+
+---
+
 ## Sobre
 
 - Essa aplicação é um template com configurações básicas iniciais para agilizar o desenvolvimento de aplicações backend com nestJs
@@ -17,29 +45,27 @@
 ```
 .
 ├── src
-│   ├── application             # Application domain folder
-│   │   ├── enums               # Application enumerations
-│   │   ├── ports               # Application contracts
-│   │   ├── repositories        # Application persistence layer
-│   │   │    ├── ports          # Repositories contracts
-│   │   │    ├── prisma         # Prisma repositories layer implementation
-│   │   │    └── index.ts       # Import/export of all repositories layer
-│   │   └── useCases            # Application business rule layer
+│   ├── common                 # Common module, shared module config
+│   │   ├── domain             # Domain shared files
+│   │   ├── enum               # Enum shared
+│   │   ├── infra              # Infra shared files
+│   │   │    ├── prisma        # Shared prisma models
+│   │   │    ├── http          # Shared http module interface
+│   │   │    └── database      # Shared database connection config
+│   │   ├── pipes              # Global pipes
+│   │   └── utils              # Shared utils
 │   │
-│   └── main                    # Main folder with configs, ports and adapters
-│       ├── config              # Main configs with factories, responses, envs, db configs and utils
-│       ├── controllers         # HTTP api implementation routes
-│       ├── queues              # Mediator between queue entry and use cases
-│       ├── requests            # Constructor between controllers and use cases, this layer build the necessary controller resources
-│       └── schemas             # Input data schema contract and validation
+│   └── modules                # Main folder with configs, ports and adapters
+│       ├── example            # Domain module, contains all application/business rules
+│       │   ├── application    # Application business rules(UseCases)
+│       │   ├── domain         # Domain business rules. Entities, repository interfaces and more
+│       │   └── infra          # Port communication to external environments
+│       └── example.module.ts  # Module configuration entrypoint
 │
 ├── *.env.*                     # Environment configuration per stage
 ├── docker-compose.yaml         # Application resource provisioning with docker
-├── openapi.yaml                # Open APi file with all http routes
 ├── package.json                # Javascript scripts
-├── serverless.ts               # Serverless service file
 ├── tsconfig.json               # Typescript compiler configuration
-└── webpack.config.js           # Webpack configuration
 ``` -->
 
 ## Pacotes
