@@ -1,0 +1,31 @@
+version: '3.9'
+services:
+  app:
+    container_name: app
+    depends_on:
+      - pg_database
+    build:
+      context: ../
+      dockerfile: dockerfiles/Dockerfile
+      target: development
+    ports:
+      - '3000:3000'
+    volumes:
+      - ..:/app
+    env_file:
+      - ../.env.local
+    command: npm run start:dev
+
+  pg_database:
+    image: postgres
+    container_name: 'template_pg'
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: example
+      POSTGRES_DB: example
+
+networks:
+  default:
+    driver: bridge
