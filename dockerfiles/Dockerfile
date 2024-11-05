@@ -5,16 +5,13 @@ RUN apk update && apk add openssl
 
 WORKDIR /app
 
-COPY --chown=node:node package*.json ./
+COPY package*.json ./
 
 RUN npm ci
 
-COPY --chown=node:node . .
+COPY . .
 
 RUN npm run prisma:generate
-
-USER node
-
 
 ## ------- PRODUCTION DEVELOPMENT -------
 ##  -- Pre-build image --
